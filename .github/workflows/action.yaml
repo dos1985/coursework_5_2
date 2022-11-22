@@ -11,4 +11,4 @@ jobs:
       - name: docker login
         run: echo ${{ secrets.DOCKERHUB_KEY }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
       - name: docker push
-        run: docker push alexeygalt/skywars::$GITHUB_REF_NAME-$GITHUB_RUN_ID
+        run: docker push alexeygalt/skywars:$GITHUB_REF_NAME-$GITHUB_RUN_ID
