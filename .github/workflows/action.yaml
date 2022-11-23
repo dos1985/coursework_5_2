@@ -31,4 +31,13 @@ jobs:
           source: "course_5/docker-compose.yaml"
           target: "course_5"
           strip_components: 1
+      - name: run docker-compose
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          script: |
+            cd course_5
+            echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker-compose up -d
 
