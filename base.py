@@ -2,6 +2,7 @@ from unit import BaseUnit
 
 
 class BaseSingleton(type):
+    """base class"""
     _instances = {}
 
     def __call__(cls, *args, **kwargs):
@@ -12,6 +13,7 @@ class BaseSingleton(type):
 
 
 class Arena(metaclass=BaseSingleton):
+    """battlefield"""
     STAMINA_PER_ROUND = 1
     player = BaseUnit
     enemy = BaseUnit
@@ -23,6 +25,7 @@ class Arena(metaclass=BaseSingleton):
         self.game_is_running = True
 
     def _check_players_hp(self):
+        """end of the battle"""
         if self.player.hp <= 0 and self.enemy.hp <= 0:
             self.battle_result = f'Ничья между {self.player.name} и {self.enemy.name}!'
         elif self.player.hp >= 0 >= self.enemy.hp:
@@ -34,6 +37,7 @@ class Arena(metaclass=BaseSingleton):
         return self._end_game()
 
     def _stamina_regeneration(self):
+        """recovery stamina"""
         if self.player.stamina + self.STAMINA_PER_ROUND > self.player.unit_class.max_stamina:
             self.player.stamina = self.player.unit_class.max_stamina
         elif self.player.stamina < self.player.unit_class.max_stamina:

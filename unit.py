@@ -8,13 +8,11 @@ from typing import Optional
 
 class BaseUnit(ABC):
     """
-    Базовый класс юнита
+    base unit class
     """
 
     def __init__(self, name: str, unit_class: UnitClass):
-        """
-        При инициализации класса Unit используем свойства класса UnitClass
-        """
+
         self.name = name
         self.unit_class = unit_class
         self.hp = unit_class.max_health
@@ -58,19 +56,12 @@ class BaseUnit(ABC):
 
     @abstractmethod
     def hit(self, target: BaseUnit) -> str:
-        """
-        этот метод будет переопределен ниже
-        """
+
         pass
 
     def use_skill(self, target: BaseUnit) -> str:
         """
-        метод использования умения.
-        если умение уже использовано возвращаем строку
-        Навык использован
-        Если же умение не использовано тогда выполняем функцию
-        self.unit_class.skill.use(user=self, target=target)
-        и уже эта функция вернем нам строку которая характеризует выполнение умения
+        method of using the skill.
         """
         if self._is_skill_used:
             return "Навык уе использован"

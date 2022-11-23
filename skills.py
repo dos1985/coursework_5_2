@@ -8,7 +8,7 @@ if TYPE_CHECKING:
 
 class Skill(ABC):
     """
-    Базовый класс умения
+     base skills class
     """
     user = None
     target = None
@@ -37,8 +37,7 @@ class Skill(ABC):
 
     def use(self, user: BaseUnit, target: BaseUnit) -> str:
         """
-        Проверка, достаточно ли выносливости у игрока для применения умения.
-        Для вызова скилла везде используем просто use
+        Checking if the player has enough stamina to use the skill.
         """
         self.user = user
         self.target = target

@@ -16,11 +16,13 @@ arena = Arena()
 
 @app.route("/")
 def menu_page():
+    """main page"""
     return render_template("index.html")
 
 
 @app.route("/fight/")
 def start_fight():
+    """fight page"""
     arena.start_game(player=heroes.get("player"), enemy=heroes.get("enemy"))
     return render_template("fight.html", heroes=heroes, result="Бой начался!")
 
@@ -56,6 +58,7 @@ def end_fight():
 
 @app.route("/choose-hero/", methods=['post', 'get'])
 def choose_hero():
+    """choosing hero end equipment"""
     if request.method == "GET":
         header = "Выберите героя"
         equipment = Equipment()
@@ -85,6 +88,7 @@ def choose_hero():
 
 @app.route("/choose-enemy/", methods=['post', 'get'])
 def choose_enemy():
+    """choosing enemy end equipment"""
     if request.method == "GET":
         header = "Выберите противника"
         equipment = Equipment()
