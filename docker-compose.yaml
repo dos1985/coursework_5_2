@@ -3,8 +3,8 @@ version: '3.8'
 services:
 
   app:
-    build: .
     image: alexeygalt/skywars
+    build: .
     ports:
       - 80:5000
 
