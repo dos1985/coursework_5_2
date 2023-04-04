@@ -53,7 +53,7 @@ class Equipment:
     @staticmethod
     def _get_equipment_data() -> EquipmentData:
         """load equipments from json"""
-        equipment_file = open("./data/equipment.json")
+        equipment_file = open("./data/equipment.json", encoding='utf-8')
         data = json.load(equipment_file)
         equipment_schema = marshmallow_dataclass.class_schema(EquipmentData)
         try:
